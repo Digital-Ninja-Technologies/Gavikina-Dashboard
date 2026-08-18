@@ -7,6 +7,7 @@ function fieldsFor(open) {
   if (open.type === 'Customer') {
     fields.push(['Property type', open.property]);
     fields.push(['Reason for solar', open.reason || 'Not given']);
+    fields.push(['What should the system power?', open.appliances && open.appliances.length ? open.appliances.map((a) => a[0]).join(', ') : 'Not reached']);
     fields.push(['Backup duration', open.backup || 'Not reached']);
     fields.push(['Monthly fuel spend', open.fuel ? naira(open.fuel) : 'Not reached']);
     fields.push(['Preferred payment', open.payment || 'Not reached']);
