@@ -1,25 +1,32 @@
-# CODING AGENTS: READ THIS FIRST
+# Gavikina Admin Dashboard
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Internal admin dashboard for Gavikina Energy — manages enquiries (customers, agents,
+investors, job applications, abandoned assessments), an overview with stats and
+charts, and a Past Projects CRUD used to populate the public site's projects page.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Built with React + Vite. Originally prototyped in Claude Design; this repo is the
+real implementation.
 
-## What you should do — IMPORTANT
+## Develop
 
-**Read the chat transcripts first.** There are 2 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+```
+npm install
+npm run dev
+```
 
-**Read `project/Gavikina Admin Dashboard.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Build
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+```
+npm run build
+```
 
-## About the design files
+Outputs a static `dist/` bundle — deployable anywhere that serves static files
+(this repo deploys to Vercel with zero configuration).
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Notes
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
-
-## Bundle contents
-
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Website interface design` project files (HTML prototypes, assets, components)
+- Auth, and the Past Projects list, persist to `localStorage` — there's no backend
+  yet, so data resets if storage is cleared.
+- Enquiry data (`src/data.js`) is seed/sample data standing in for a real API.
+- The sidebar collapses into an off-canvas drawer with a hamburger toggle below
+  960px, and the layout reflows further below 640px.
